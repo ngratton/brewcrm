@@ -1,0 +1,26 @@
+<div class="card-container">
+    <div class="card-header">
+        <h3>Contacts</h3>
+        <span class="card-add-item">+</span>
+    </div>
+    <div class="card">
+
+        <table class="contact-table">
+            <thead>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Compagnie</th>
+                <th><em>Options</em></th>
+            </thead>
+            <tbody>
+                <tr v-for="(contact, index) in contactList" :key="index" @click="hello">
+                    <td>{{ contact.prenom }}</td>
+                    <td>{{ contact.nom }}</td>
+                    <td>{{ contact.titre }}</td>
+                    <td><span>[</span> | <span>[]</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
