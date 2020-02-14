@@ -5,7 +5,7 @@ $color-main: #68C79D;
 $color-main-dark: #00967C;
 $color-main-bg: #EFF3F3;
 $color-card-bg: white;
-$color-card-hover: #F4E5E2;
+$color-card-hover: rgba(244, 229, 226, 0.5);
 $color-btn-text: white;
 $color-text-darkgray: #373B3B;
 $color-text-lightgray: #EFF3F3;
@@ -95,7 +95,8 @@ h3 {
 
         .hamburger {
             cursor: pointer;
-            font-size: 2em;
+            display: flex;
+            align-self: center;
         }
     }
 
@@ -206,6 +207,7 @@ main {
         position: sticky;
 
         &:last-of-type {
+            width: 75px;
             text-align: center;
         }
     }
@@ -222,10 +224,32 @@ main {
         font-size: .9em;
 
         &:last-of-type {
-            width: 75px;
             text-align: center;
         }
     }
+
+    .contacts-opts {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+
+        span {
+            color: $color-main;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3px;
+            border-radius: 50px;
+            width: 32px;
+            height: 32px;
+            transition: background-color .1s ease;
+
+            &:hover {
+                background-color: $color-text-darkgray;
+            }
+        }
+    }
+
 
 }
 

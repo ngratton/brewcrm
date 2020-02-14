@@ -75,7 +75,8 @@ h3 {
 
 #main-nav #top-logo-ham .hamburger {
   cursor: pointer;
-  font-size: 2em;
+  display: flex;
+  align-self: center;
 }
 
 #main-nav .nav-menu {
@@ -185,11 +186,12 @@ main .card-container .card {
 }
 
 .contact-table th:last-of-type {
+  width: 75px;
   text-align: center;
 }
 
 .contact-table tr:hover {
-  background-color: #F4E5E2;
+  background-color: rgba(244, 229, 226, 0.5);
 }
 
 .contact-table td {
@@ -198,6 +200,27 @@ main .card-container .card {
 }
 
 .contact-table td:last-of-type {
-  width: 75px;
   text-align: center;
+}
+
+.contact-table .contacts-opts {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.contact-table .contacts-opts span {
+  color: #68C79D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+  border-radius: 50px;
+  width: 32px;
+  height: 32px;
+  transition: background-color .1s ease;
+}
+
+.contact-table .contacts-opts span:hover {
+  background-color: #373B3B;
 }
