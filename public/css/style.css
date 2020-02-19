@@ -92,7 +92,7 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 40px;
+  padding: 0 50px;
 }
 
 #top-header #logo-nav-close {
@@ -135,6 +135,17 @@ main .card-container .card-header {
   padding: 0 20px;
 }
 
+main .card-container .card-header .card-head-title {
+  display: flex;
+  align-items: flex-end;
+}
+
+main .card-container .card-header .card-head-title .card-head-type {
+  margin-left: 1em;
+  margin-bottom: 20px;
+  color: #8B8B8B;
+}
+
 main .card-container .card-header h3 {
   text-transform: uppercase;
 }
@@ -168,6 +179,11 @@ main .card-container .card {
   position: relative;
   max-height: 300px;
   overflow-y: scroll;
+  transition: box-shadow .1s ease;
+}
+
+main .card-container .card:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .contact-table {
@@ -223,4 +239,21 @@ main .card-container .card {
 
 .contact-table .contacts-opts span:hover {
   background-color: #373B3B;
+}
+
+#contact-dedails-card {
+  overflow-y: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-height: 100%;
+}
+
+#contact-dedails-card .details-nom {
+  font-size: 2em;
+  margin-right: 8px;
+}
+
+#contact-dedails-card span {
+  margin: 10px 0;
 }

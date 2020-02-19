@@ -18,3 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/contacts', 'ContactController@list');
+
+Route::get('/contact/{id}', 'ContactController@show');

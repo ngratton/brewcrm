@@ -1,7 +1,7 @@
 import tpl from '../utils/avecTemplateHtml.js'
 import { http_get } from '../utils/request.js'
 
-Vue.component('contacts', tpl({
+export default Vue.component('contacts', tpl({
     template: 'components/contacts.html',
     data() {
         return {
@@ -20,8 +20,8 @@ Vue.component('contacts', tpl({
 
     },
     methods: {
-        hello() {
-            console.log('Hello!')
+        openDetails(id) {
+            this.$router.push(`/contact/${id}`)
         }
     },
     watch: {

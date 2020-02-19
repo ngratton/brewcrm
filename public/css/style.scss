@@ -11,6 +11,7 @@ $color-text-darkgray: #373B3B;
 $color-text-lightgray: #EFF3F3;
 $color-text-midgray: #8B8B8B;
 $color-card-shadow: rgba(0, 0, 0, 0.05);
+$color-card-shadow-hover: rgba(0, 0, 0, 0.1);
 
 $font-logo: 'Crete Round', serif;
 $font-body: 'Lato', 'Segoe UI', Arial, Helvetica, sans-serif; // 'Lato'
@@ -114,7 +115,7 @@ h3 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 40px;
+    padding: 0 50px;
 
     #logo-nav-close {
         font-family: $font-logo;
@@ -154,6 +155,17 @@ main {
            align-items: center;
            padding: 0 20px;
 
+            .card-head-title {
+                display: flex;
+                align-items: flex-end;
+
+                .card-head-type {
+                    margin-left: 1em;
+                    margin-bottom: 20px;
+                    color: $color-text-midgray;
+                }
+            }
+
            h3 {
                text-transform: uppercase;
            }
@@ -189,6 +201,11 @@ main {
             position: relative;
             max-height: 300px;
             overflow-y: scroll;
+            transition: box-shadow .1s ease;
+
+            &:hover {
+                box-shadow: 0 10px 25px $color-card-shadow-hover, 0 5px 10px $color-card-shadow-hover;
+            }
         }
     }
 }
@@ -249,8 +266,23 @@ main {
             }
         }
     }
+}
 
+#contact-dedails-card {
+    overflow-y: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-height: 100%;
 
+    .details-nom {
+        font-size: 2em;
+        margin-right: 8px;
+    }
+
+    span {
+        margin: 10px 0;
+    }
 }
 
 // @media screen and (prefers-color-scheme: dark)  {

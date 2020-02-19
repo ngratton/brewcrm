@@ -1,0 +1,36 @@
+<div class="card-container">
+    <div class="card-header">
+        <div class="card-head-title">
+            <h3>{{ contact.prenom}} {{ contact.nom }}</h3>
+            <span class="card-head-type">
+                <small>(Contact)</small>
+            </span>
+        </div>
+        <span class="card-add-item">+</span>
+    </div>
+    <div class="card" id="contact-dedails-card">
+        <div>
+            <span class="details-nom">{{ contact.prenom }}</span>
+            <span class="details-nom">{{ contact.nom }}</span>
+        </div>
+        <span class="details-title">{{ contact.titre }}</span>
+        <span class="details-compagnie">Compagnie : {{ contact.companie_id }}</span>
+        <div>
+            <span class="details-comm">{{ contact.email_1 }}</span>
+            <span class="details-comm-type">- {{ contact.email_1_type }}</span>
+        </div>
+        <div>
+            <span class="details-comm">{{ contact.email_2 }}</span>
+            <span class="details-comm-type">- {{ contact.email_2_type }}</span>
+        </div>
+        <div>
+            <span class="details-comm">{{ contact.phone_1 }}</span>
+            <span class="details-comm-type">- {{ contact.phone_1_type }}</span>
+        </div>
+        <div>
+            <span class="details-comm">{{ contact.phone_2 }}</span>
+            <span class="details-comm-type">- {{ contact.phone_2_type }}</span>
+        </div>
+        <span class="details-notes">NOTES : {{ contact.notes }}</span>
+    </div>
+</div>
