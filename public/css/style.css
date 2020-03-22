@@ -53,10 +53,27 @@ h3 {
   padding: 10px 40px;
   cursor: pointer;
   transition: background-color .1s ease;
+  display: flex;
+  align-items: center;
 }
 
 #main-nav ul li:hover {
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+#main-nav ul li:hover svg.nav-icons {
+  fill: white;
+}
+
+#main-nav ul li svg.nav-icons {
+  height: 20px;
+  width: 20px;
+  fill: #00967C;
+  transition: fill .1s ease;
+}
+
+#main-nav ul li span {
+  margin-left: 20px;
 }
 
 #main-nav #top-logo-ham {
@@ -81,7 +98,6 @@ h3 {
 
 #main-nav .nav-menu {
   overflow: auto;
-  padding-bottom: 200px;
 }
 
 #top-header {
@@ -108,11 +124,37 @@ h3 {
   padding: 0 40px;
 }
 
-#top-header #search-box input {
+#top-header #search-box > div {
+  position: relative;
+}
+
+#top-header #search-box > div input {
   width: 230px;
-  padding: 10px;
-  border-radius: 16px;
+  padding: 10px 10px 10px 25px;
+  border-radius: 0.5em;
   border: 1px solid #8B8B8B;
+}
+
+#top-header #search-box > div .search-icon {
+  height: 15px;
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  fill: #8B8B8B;
+}
+
+#top-header #profile .profile-icons {
+  height: 25px;
+  width: 25px;
+  margin: 0 10px;
+  fill: #373B3B;
+  transition: fill .1s ease;
+}
+
+#top-header #profile .profile-icons:hover {
+  fill: #00967C;
+  cursor: pointer;
 }
 
 main {
@@ -150,82 +192,151 @@ main .card-container .card-header h3 {
   text-transform: uppercase;
 }
 
-main .card-container .card-header .card-add-item {
+main .card-container .card-header .card-options {
+  display: flex;
+  align-items: center;
+}
+
+main .card-container .card-header .card-options label {
+  margin-right: 10px;
+  font-size: .7rem;
+  color: #373B3B;
+}
+
+main .card-container .card-header .card-options .card-add-item {
+  margin-left: 30px;
   height: 25px;
   width: 25px;
-  background-color: #00967C;
-  color: white;
+  fill: #00967C;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  font-family: Arial, Helvetica, sans-serif;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05), 0 5px 10px rgba(0, 0, 0, 0.05);
-  font-weight: bold;
   cursor: pointer;
   transition: transform .21s ease, box-shadow .1s ease;
 }
 
-main .card-container .card-header .card-add-item:hover {
-  transform: translateY(-3px);
+main .card-container .card-header .card-options .card-add-item:hover {
+  transform: translateY(-2px);
   box-shadow: 0 15px 10px rgba(0, 0, 0, 0.05), 0 10px 5px rgba(0, 0, 0, 0.05);
 }
 
 main .card-container .card {
   background-color: white;
-  padding: 20px;
+  padding: 10px;
   border-radius: .5rem;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05), 0 5px 10px rgba(0, 0, 0, 0.05);
-  position: relative;
-  max-height: 300px;
+  min-height: 360px;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+main .card-container .card .card-content {
+  width: 100%;
+  min-height: 280px;
   overflow-y: scroll;
-  transition: box-shadow .1s ease;
+  transition: box-shadow .1s ease, scrollbar-color .1s ease;
+  scrollbar-color: white white;
+  scrollbar-width: thin;
+  /* width */
+  /* Track */
+  /* Handle */
+}
+
+main .card-container .card .card-content::-webkit-scrollbar {
+  width: 10px;
+}
+
+main .card-container .card .card-content::-webkit-scrollbar-track {
+  background: none;
+  border-radius: .5rem;
+}
+
+main .card-container .card .card-content::-webkit-scrollbar-thumb {
+  border-radius: .5rem;
+  background-color: none;
+  transition: background-color .4s ease;
+}
+
+main .card-container .card .card-content:hover {
+  scrollbar-color: #373B3B #EFF3F3;
+}
+
+main .card-container .card .card-content:hover::-webkit-scrollbar-thumb {
+  background-color: #555;
+  transition: background-color .4s ease;
 }
 
 main .card-container .card:hover {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
-.contact-table {
+main .card-container .pagination {
   width: 100%;
-  border-collapse: collapse;
+  margin-top: 5px;
+  justify-content: flex-end;
+  padding-right: 10px;
+  font-size: 0.8em;
+  color: #8B8B8B;
 }
 
-.contact-table th {
+main .card-container .pagination a {
+  color: #68C79D;
+  text-decoration: none;
+  margin: 0 5px;
+  padding: 0 5px;
+}
+
+.card-table {
+  width: 100%;
+  border-collapse: collapse;
+  position: relative;
+}
+
+.card-table thead {
+  background-color: white;
   border-bottom: 1px solid #8B8B8B;
+}
+
+.card-table th {
   color: #8B8B8B;
   font-weight: 400;
   font-size: .75em;
-  padding: 5px;
+  padding: 20px 5px 5px;
   text-align: left;
-  position: sticky;
 }
 
-.contact-table th:last-of-type {
+.card-table th:last-of-type {
   width: 75px;
   text-align: center;
 }
 
-.contact-table tr:hover {
+.card-table tr:hover {
   background-color: rgba(244, 229, 226, 0.5);
 }
 
-.contact-table td {
+.card-table td {
   padding: 5px;
   font-size: .9em;
 }
 
-.contact-table td:last-of-type {
+.card-table td:last-of-type {
   text-align: center;
 }
 
-.contact-table .contacts-opts {
+.card-table .contacts-opts {
   display: flex;
   justify-content: center;
   width: 100%;
 }
 
-.contact-table .contacts-opts span {
+.card-table .contacts-opts a {
+  color: #00967C;
+  transition: color .1s ease;
+}
+
+.card-table .contacts-opts span {
   color: #68C79D;
   display: flex;
   align-items: center;
@@ -237,8 +348,12 @@ main .card-container .card:hover {
   transition: background-color .1s ease;
 }
 
-.contact-table .contacts-opts span:hover {
+.card-table .contacts-opts span:hover {
   background-color: #373B3B;
+}
+
+.card-table .contacts-opts span:hover a {
+  color: white;
 }
 
 #contact-dedails-card {
@@ -254,6 +369,43 @@ main .card-container .card:hover {
   margin-right: 8px;
 }
 
+#contact-dedails-card .contact-communication {
+  width: 100%;
+  margin: 30px 0;
+}
+
 #contact-dedails-card span {
   margin: 10px 0;
+}
+
+/*
+*   UTILS
+*/
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-gauche {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.flex-droite {
+  flex: 1;
+  margin-left: 10px;
+}
+
+.sort-asc,
+.sort-desc {
+  width: 15px;
+  fill: #373B3B;
+}
+
+.sort-asc:hover,
+.sort-desc:hover {
+  cursor: pointer;
 }

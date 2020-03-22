@@ -6,7 +6,7 @@ export default Vue.component('contactdetails', tpl({
     data() {
         return {
             contactId: this.$route.params.id,
-            contact: '',
+            contact: Object,
         }
     },
     mounted() {
@@ -14,18 +14,12 @@ export default Vue.component('contactdetails', tpl({
             this.contact = data
         })
     },
-    updated() {
-
-    },
-    beforeDestroy () {
-
+    computed: {
+        nomComplet() {
+            return this.contact.prenom + ' ' + this.contact.nom
+        },
     },
     methods: {
-        openDetails(id) {
-            // router.push(`/contact/${id}`)
-        }
-    },
-    watch: {
 
     },
 }))

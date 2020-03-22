@@ -73,9 +73,27 @@ h3 {
         padding: 10px 40px;
         cursor: pointer;
         transition: background-color .1s ease;
+        display: flex;
+        align-items: center;
 
         &:hover {
             background-color: rgba(255,255,255,0.1);
+
+            svg.nav-icons {
+                fill: white;
+            }
+        }
+
+        svg.nav-icons {
+            height: 20px;
+            width: 20px;
+            fill: $color-main-dark;
+            transition: fill .1s ease;
+
+        }
+
+        span {
+            margin-left: 20px;
         }
 
     }
@@ -103,7 +121,6 @@ h3 {
 
     .nav-menu {
         overflow: auto;
-        padding-bottom: 200px;
     }
 }
 
@@ -129,11 +146,41 @@ h3 {
         justify-content: flex-end;
         padding: 0 40px;
 
-        input {
-            width: 230px;
-            padding: 10px;
-            border-radius: 16px;
-            border: 1px solid $color-text-midgray;
+        & > div {
+            position: relative;
+
+            input {
+                width: 230px;
+                padding: 10px 10px 10px 25px;
+                border-radius: 0.5em;
+                border: 1px solid $color-text-midgray;
+            }
+
+            .search-icon {
+                height: 15px;
+                position: absolute;
+                left: 5px;
+                top: 50%;
+                transform: translateY(-50%);
+                fill: $color-text-midgray;
+
+            }
+        }
+    }
+
+    #profile {
+
+        .profile-icons {
+            height: 25px;
+            width: 25px;
+            margin: 0 10px;
+            fill: $color-text-darkgray;
+            transition: fill .1s ease;
+
+            &:hover {
+                fill: $color-main-dark;
+                cursor: pointer;
+            }
         }
     }
 }
@@ -170,58 +217,124 @@ main {
                text-transform: uppercase;
            }
 
-           .card-add-item {
-               height: 25px;
-               width: 25px;
-               background-color: $color-main-dark;
-               color: $color-btn-text;
+           .card-options {
                display: flex;
                align-items: center;
-               justify-content: center;
-               border-radius: 50%;
-               font-family: Arial, Helvetica, sans-serif;
-               box-shadow: 0 10px 25px $color-card-shadow, 0 5px 10px $color-card-shadow;
-               font-weight: bold;
-               cursor: pointer;
-               transition: transform .21s ease, box-shadow .1s ease;
 
-               &:hover {
-                    transform: translateY(-3px);
-                    box-shadow: 0 15px 10px $color-card-shadow, 0 10px 5px $color-card-shadow;
-
+               label {
+                   margin-right: 10px;
+                   font-size: .7rem;
+                   color: $color-text-darkgray;
                }
-           }
-       }
+
+               .card-add-item {
+                   margin-left: 30px;
+                   height: 25px;
+                   width: 25px;
+                //    color: $color-btn-text;
+                   fill: $color-main-dark;
+                   display: flex;
+                   align-items: center;
+                   justify-content: center;
+                   border-radius: 50%;
+                   box-shadow: 0 10px 25px $color-card-shadow, 0 5px 10px $color-card-shadow;
+                   cursor: pointer;
+                   transition: transform .21s ease, box-shadow .1s ease;
+
+                   &:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 15px 10px $color-card-shadow, 0 10px 5px $color-card-shadow;
+
+                   }
+                }
+            }
+        }
 
         .card {
             background-color: $color-card-bg;
-            padding: 20px;
+            padding: 10px;
             border-radius: .5rem;
             box-shadow: 0 10px 25px $color-card-shadow, 0 5px 10px $color-card-shadow;
-            position: relative;
-            max-height: 300px;
-            overflow-y: scroll;
-            transition: box-shadow .1s ease;
+            // position: relative;
+            min-height: 360px;
+            max-height: 100%;
+            overflow: hidden;
+
+            .card-content {
+                width: 100%;
+                min-height: 280px;
+                overflow-y: scroll;
+                transition: box-shadow .1s ease, scrollbar-color .1s ease;
+                scrollbar-color: $color-card-bg $color-card-bg;
+                scrollbar-width: thin;
+
+                /* width */
+                &::-webkit-scrollbar {
+                    width: 10px;
+                }
+
+                /* Track */
+                &::-webkit-scrollbar-track {
+                    background: none;
+                    border-radius: .5rem;
+                }
+
+                /* Handle */
+                &::-webkit-scrollbar-thumb {
+                    border-radius: .5rem;
+                    background-color: none;
+                    transition: background-color .4s ease;
+                }
+
+                &:hover {
+                    scrollbar-color: $color-text-darkgray $color-main-bg;
+
+                    &::-webkit-scrollbar-thumb {
+                        background-color: #555;
+                        transition: background-color .4s ease;
+                    }
+                }
+            }
 
             &:hover {
                 box-shadow: 0 10px 25px $color-card-shadow-hover, 0 5px 10px $color-card-shadow-hover;
             }
         }
+
+        .pagination {
+            width: 100%;
+            margin-top: 5px;
+            justify-content: flex-end;
+            padding-right: 10px;
+            font-size: 0.8em;
+            color: $color-text-midgray;
+
+            a {
+                color: $color-main;
+                text-decoration: none;
+                margin: 0 5px;
+                padding: 0 5px;
+            }
+        }
     }
 }
 
-.contact-table {
+.card-table {
     width: 100%;
     border-collapse: collapse;
+    position: relative;
+
+    thead {
+        background-color: $color-card-bg;
+        border-bottom: 1px solid $color-text-midgray;
+    }
 
     th {
-        border-bottom: 1px solid $color-text-midgray;
         color: $color-text-midgray;
         font-weight: 400;
         font-size: .75em;
-        padding: 5px;
+        padding: 20px 5px 5px;
         text-align: left;
-        position: sticky;
 
         &:last-of-type {
             width: 75px;
@@ -250,6 +363,11 @@ main {
         justify-content: center;
         width: 100%;
 
+        a {
+            color: $color-main-dark;
+            transition: color .1s ease;
+        }
+
         span {
             color: $color-main;
             display: flex;
@@ -263,6 +381,10 @@ main {
 
             &:hover {
                 background-color: $color-text-darkgray;
+
+                a {
+                    color: white;
+                }
             }
         }
     }
@@ -278,6 +400,11 @@ main {
     .details-nom {
         font-size: 2em;
         margin-right: 8px;
+    }
+
+    .contact-communication {
+        width: 100%;
+        margin: 30px 0;
     }
 
     span {
@@ -296,3 +423,35 @@ main {
 //     $color-text-lightgray: #EFF3F3; //
 //     $color-card-shadow: rgba(0, 0, 0, 0.05);
 // }
+
+/*
+*   UTILS
+*/
+
+.flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-gauche {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.flex-droite {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.sort-asc,
+.sort-desc {
+    width: 15px;
+    fill: $color-text-darkgray;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

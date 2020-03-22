@@ -1,0 +1,74 @@
+<div class="card-container">
+    <div class="card-header">
+        <div class="card-head-title">
+            <h3>Ajouter un contact</h3>
+        </div>
+    </div>
+    <div class="card" id="contact-dedails-card">
+        <div class="card-content">
+            <form action="/api/contact/add" method="post" @submit.prevent="submitNewContact">
+                <div>
+                    <label class="details-nom" for="prenom">*Prénom</label>
+                    <input type="text" name="prenom" id="prenom" v-model="prenom" >
+                    <label class="details-nom" for="nom">*Nom</label>
+                    <input type="text" name="nom" id="nom" v-model="nom" >
+                </div>
+                <div>
+                    <label class="details-title" for="titre">*Titre</label>
+                    <input type="text" name="titre" id="titre" v-model="titre" >
+                </div>
+                <div>
+                    <label class="details-compagnie" for="companie_id">Entreprise</label>
+                    <input type="number" name="companie_id" id="companie_id" v-model="companie_id" >
+                </div>
+                <div>
+                    <label class="details-comm" for="email_1">*Courriel principal</label>
+                    <input type="email" name="email_1" id="email_1" v-model="email_1" >
+                    <label class="details-comm-type" for="email_1_type">*Type</label>
+                    <select name="email_1_type" id="email_1_type" v-model="email_1_type" >
+                        <option value="1">Bureau</option>
+                        <option value="2">Personnel</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="details-comm" for="email_2">Courriel secondaire</label>
+                    <input type="email" name="email_2" id="email_2" v-model="email_2">
+                    <label class="details-comm-type" for="email_2_type">Type</label>
+                    <select name="email_2_type" id="email_2_type" v-model="email_2_type">
+                        <option value="1">Bureau</option>
+                        <option value="2">Personnel</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="details-comm" for="phone_1">*Téléphone principal</label>
+                    <input type="tel" name="phone_1" id="phone_1" v-model="phone_1" >
+                    <label class="details-comm-type" for="phone_1_type">*Type</label>
+                    <select name="phone_1_type" id="phone_1_type" v-model="phone_1_type" >
+                        <option value="1">Bureau</option>
+                        <option value="2">Cellulaire</option>
+                        <option value="3">Maison</option>
+                        <option value="4">Pagette</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="details-comm" for="phone_2">Téléphone secondaire</label>
+                    <input type="tel" name="phone_2" id="phone_2" v-model="phone_2">
+                    <label class="details-comm-type" for="phone_2_type">Type</label>
+                    <select name="phone_2_type" id="phone_2_type" v-model="phone_2_type">
+                        <option value="1">Bureau</option>
+                        <option value="2">Cellulaire</option>
+                        <option value="3">Maison</option>
+                        <option value="4">Pagette</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="details-notes" for="notes">NOTES :</label>
+                    <textarea name="notes" id="notes" cols="30" rows="10" v-model="notes"></textarea>
+                </div>
+                <div>
+                    <input type="submit" value="Sauvegarder">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

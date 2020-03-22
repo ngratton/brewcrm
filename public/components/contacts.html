@@ -1,34 +1,62 @@
 <div class="card-container">
     <div class="card-header">
         <h3>Contacts</h3>
-        <span class="card-add-item">+</span>
+        <div class="card-options">
+            <label for="resultatsparpage">Résultats par page : </label>
+            <select name="resultatsparpage" id="resultatsparpage" v-model="resultatsParPage">
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="0">Tous</option>
+            </select>
+        <span class="card-add-item" @click.prevent="addContact">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M11 9V5H9v4H5v2h4v4h2v-4h4V9h-4zm-1 11a10 10 0 1 1 0-20 10 10 0 0 1 0 20z"/></svg>
+        </span>
+        </div>
     </div>
     <div class="card">
-
-        <table class="contact-table">
+        <table class="card-table">
             <thead>
-                <th>Prénom</th>
-                <th>Nom</th>
+                <th>
+                    <span>
+                        Prénom
+                    </span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="sort-asc" viewBox="0 0 20 20"><path d="M10.707 7.05L10 6.343 4.343 12l1.414 1.414L10 9.172l4.243 4.242L15.657 12z"/></svg></th>
+                <th>
+                    <span>
+                        Nom
+                    </span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="sort-desc" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg></th>
                 <th>Compagnie</th>
                 <th><em>Options</em></th>
             </thead>
-            <tbody>
-                <tr v-for="(contact, index) in contactList" :key="index" @click="openDetails(index +1)">
-                    <td>{{ contact.prenom }}</td>
-                    <td>{{ contact.nom }}</td>
-                    <td>{{ contact.titre }}</td>
-                    <td class="contacts-opts">
-                        <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                        </span>
-                        &nbsp;
-                        <span>
-                            <a href="email_1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
-                        </span>
-                    </td>
-                </tr>
-            </tbody>
         </table>
-
+        <div class="card-content">
+            <table class="card-table">
+                <tbody>
+                    <tr v-for="contact in contactList" :key="contact.id" @click="openDetails(contact.id)">
+                        <td>{{ contact.prenom }}</td>
+                        <td>{{ contact.nom }}</td>
+                        <td>{{ contact.titre }}</td>
+                        <td class="contacts-opts">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            </span>
+                            &nbsp;
+                            <span>
+                                <a href="email_1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination flex" v-if="resultatsParPage != 0">
+            <a :href="firstPageUrl" @click.prevent="changerPage(firstPageUrl)">|<</a>
+            <a :href="prevPageUrl" @click.prevent="changerPage(prevPageUrl)"><</a>
+            {{ currentPageNum }} de {{ totalPages }}
+            <a :href="nextPageUrl" @click.prevent="changerPage(nextPageUrl)">></a>
+            <a :href="lastPageUrl" @click.prevent="changerPage(lastPageUrl)">>|</a>
+        </div>
     </div>
 </div>
